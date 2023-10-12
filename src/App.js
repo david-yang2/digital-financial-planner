@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import Mortgage from './components/mortgage/mortgage.jsx'
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <div>Testing</div>
+        <Mortgage />
         <a
           className="App-link"
           href="https://reactjs.org"
