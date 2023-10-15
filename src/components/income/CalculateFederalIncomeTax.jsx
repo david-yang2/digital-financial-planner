@@ -1,9 +1,7 @@
 import React from 'react';
 
 
-const CalculateFederalIncomeTax = (income) => {
-    let beginningIncome = income;
-
+const CalculateFederalIncomeTax = ({income}) => {
     const taxBrackets = [
         {lowerBound: 0, upperBound: 10599, taxRate: 0.10},
         {lowerBound: 11000, upperBound: 44724, taxRate: 0.12},
@@ -29,9 +27,13 @@ const CalculateFederalIncomeTax = (income) => {
         }
     }
 
-    let marginalTaxRate = totalFedTax / beginningIncome;
+    let marginalTaxRate = totalFedTax / income;
 
-    return totalFedTax;
+    return (
+        <div>
+            {totalFedTax}
+        </div>
+    )
 }
 
 export default CalculateFederalIncomeTax;
