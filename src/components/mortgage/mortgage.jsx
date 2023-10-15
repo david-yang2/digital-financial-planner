@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const Mortgage = () => {
+const Mortgage = () =>{
+
     return (
         <div>
-            <h1>this is the mortage page</h1>
+            Income Component
         </div>
     )
 }
