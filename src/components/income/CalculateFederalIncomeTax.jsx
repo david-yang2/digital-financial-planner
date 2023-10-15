@@ -13,6 +13,7 @@ const CalculateFederalIncomeTax = ({income}) => {
     ]
 
     let totalFedTax = 0;
+    let marginalTaxRate;
 
     for (let bracket of taxBrackets) {
         if ( income > bracket.upperBound ){
@@ -23,15 +24,24 @@ const CalculateFederalIncomeTax = ({income}) => {
         } else {
 
             totalFedTax += (income - bracket.lowerBound) * bracket.taxRate
+            marginalTaxRate = bracket.taxRate
             break;
         }
-    }
 
-    let marginalTaxRate = totalFedTax / income;
+        let effectiveTaxRate = totalFedTax / income;
+    }
 
     return (
         <div>
-            {totalFedTax}
+            <div>
+                Federal Income Tax: {totalFedTax.toFixed(2)}
+            </div>
+            <div>
+                Marginal Tax Rate: {marginalTaxRate} 
+            </div>
+            <div>
+                Effective Tax Rate: {(totalFedTax/income).toFixed(2)}
+            </div>
         </div>
     )
 }
