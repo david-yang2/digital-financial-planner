@@ -1,5 +1,9 @@
 
-const CalculateStateIncomeTax = ({income}) => {
+const CalculateStateIncomeTax = (props) => {
+    let income = props.income;
+    let totalStateTax = props.totalStateTax
+    let setTotalStateTax = props.setTotalStateTax;
+    // console.log(props);
 
     const taxBrackets = [
         {lowerBound: 0, upperBound: 10099, taxRate: 0.01, additionalPayment: 0},
@@ -13,21 +17,21 @@ const CalculateStateIncomeTax = ({income}) => {
         {lowerBound: 677276, upperBound: Infinity, taxRate: 0.123, additionalPayment: 65835.52},
     ]
 
-    let totalStateTax = 0;
+    let stateTax = 0;
 
     for (let bracket of taxBrackets) {
         if (income > bracket.upperBound) {
-            console.log(bracket.upperBound)
-            totalStateTax += (bracket.upperBound - bracket.lowerBound) * bracket.taxRate + bracket.additionalPayment
+            stateTax += (bracket.upperBound - bracket.lowerBound) * bracket.taxRate + bracket.additionalPayment
         } else {
-            totalStateTax += (income - bracket.lowerBound) * bracket.taxRate + bracket.additionalPayment
+            stateTax += (income - bracket.lowerBound) * bracket.taxRate + bracket.additionalPayment
             break;
         }
     }
-
+    setTotalStateTax(stateTax.toFixed(2))
+    
     return (
         <div>
-            Your state income tax is: ${totalStateTax.toFixed(2)}
+            Your total state income tax is: ${totalStateTax}
         </div>
     );
 }

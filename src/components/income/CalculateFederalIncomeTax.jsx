@@ -1,7 +1,12 @@
 import React from 'react';
 
 
-const CalculateFederalIncomeTax = ({income}) => {
+const CalculateFederalIncomeTax = (props) => {
+
+    let income = props.income;
+    let totalFedTax = props.totalFedTax;
+    let setTotalFedTax = props.setTotalFedTax;
+
     const taxBrackets = [
         {lowerBound: 0, upperBound: 10599, taxRate: 0.10},
         {lowerBound: 11000, upperBound: 44724, taxRate: 0.12},
@@ -12,7 +17,7 @@ const CalculateFederalIncomeTax = ({income}) => {
         {lowerBound: 578125, upperBound: Infinity, taxRate: 0.37},
     ]
 
-    let totalFedTax = 0;
+    let fedTax = 0;
     let marginalTaxRate;
     let effectiveTaxRate = 0;
 
@@ -20,11 +25,11 @@ const CalculateFederalIncomeTax = ({income}) => {
         if ( income > bracket.upperBound ){
 
             let taxableIncome = bracket.upperBound - bracket.lowerBound;
-            totalFedTax += taxableIncome * bracket.taxRate;
+            fedTax += taxableIncome * bracket.taxRate;
 
         } else {
 
-            totalFedTax += (income - bracket.lowerBound) * bracket.taxRate
+            fedTax += (income - bracket.lowerBound) * bracket.taxRate
             marginalTaxRate = bracket.taxRate
             break;
         }
@@ -32,20 +37,14 @@ const CalculateFederalIncomeTax = ({income}) => {
 
     }
 
-    effectiveTaxRate = (totalFedTax / income).toFixed(2);
+    setTotalFedTax(fedTax.toFixed(2));
+
+    effectiveTaxRate = (totalFedTax / props.income).toFixed(2);
     isNaN(effectiveTaxRate) ? effectiveTaxRate = 0 : effectiveTaxRate = effectiveTaxRate;
 
     return (
         <div>
-            <div>
-                Federal Income Tax: {totalFedTax.toFixed(2)}
-            </div>
-            <div>
-                Marginal Tax Rate: {marginalTaxRate} 
-            </div>
-            <div>
-                Effective Tax Rate: {effectiveTaxRate}
-            </div>
+            Your total federal income tax is: ${totalFedTax}
         </div>
     )
 }
