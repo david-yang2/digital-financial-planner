@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import CalculateFederalIncomeTax from './CalculateFederalIncomeTax'
+import CalculateStateIncomeTax from './CalculateStateIncomeTax'
 
 const Income = () => {
     const [income, setIncome] = useState(0)
@@ -15,6 +16,7 @@ const Income = () => {
             {/*Federal Tax Component */}
             <CalculateFederalIncomeTax income={income} />
             {/*State Tax Component */}
+            <CalculateStateIncomeTax income={income} />
         </div>
     )
 }
