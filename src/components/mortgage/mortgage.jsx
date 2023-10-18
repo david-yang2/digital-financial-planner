@@ -3,8 +3,8 @@ import React, {useState} from 'react';
 const Mortgage = () =>{
 
     return (
-        <div>
-            Income Component
+        <div className="Mortage">
+            Mortgage Component
         </div>
     )
 }
