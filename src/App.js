@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="App">
         <Income />
+        <Mortgage />
     </div>
   );
 }
