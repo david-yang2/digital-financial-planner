@@ -8,7 +8,7 @@ const Income = () => {
     const [totalStateTax, setTotalStateTax] = useState(0);
 
     return (
-        <div className = "income">
+        <div className = 'income'>
             <input
                 type="text"
                 placeholder="Please enter your income"
