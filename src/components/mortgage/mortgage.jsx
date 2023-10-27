@@ -4,7 +4,7 @@ const Mortgage = () =>{
 
     return (
         <div className="Mortage">
-            Mortgage Component
+            <h3>Mortgage Component</h3>
         </div>
     )
 }
