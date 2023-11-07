@@ -18,10 +18,12 @@ const Calculator = () => {
     }
 
     return (
-        <div>
-            <h1>this is the calculator component</h1>
-            <button onClick={toggleMortgageComponent}> Mortgage </button>
-            <button onClick={toggleAutomobileComponent}> Automobile </button>
+        <div className="calculator">
+            <h4>Please select a calculator</h4>
+            <div>
+                <button onClick={toggleMortgageComponent}> Mortgage </button>
+                <button onClick={toggleAutomobileComponent}> Automobile </button>
+            </div>
             {showMortgage && <Mortgage />}
             {showAutomobile && <Automobile />}
         </div>
