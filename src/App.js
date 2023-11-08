@@ -6,8 +6,11 @@ function App() {
   
   return (
     <div className="App">
-        <Income />
-        <Calculator />
+        <h3> Can I afford it? </h3>
+        <div>
+          <Income />
+          <Calculator />
+        </div>
     </div>
   );
 }
